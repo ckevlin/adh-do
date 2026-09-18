@@ -77,7 +77,7 @@ nav{position:sticky;top:0;z-index:60;background:var(--base);transition:backgroun
 .nav-cta{padding:.72em 1.6em;font-size:16px}
 
 /* footer */
-footer{border-top:1px solid var(--line);padding:24px var(--edge);display:flex;justify-content:space-between;
+footer{border-top:1px solid var(--line);padding:24px var(--edge);display:flex;justify-content:center;text-align:center;
   align-items:center;gap:12px;flex-wrap:wrap;color:var(--muted)}
 footer .wm{font-size:24px}
 footer .tiny{font-size:13px;font-weight:600}
@@ -228,6 +228,7 @@ footer .tiny{font-size:13px;font-weight:600}
 .card.done .due,.card.done .flame{display:none}
 /* urgent blaze: the app's licks, drawn live off the top edge */
 .blaze{position:absolute;left:0;top:-80px;width:100%;height:80px;pointer-events:none;overflow:hidden;z-index:-1}
+@media(max-width:640px){#themebar{gap:5px;margin-top:8px}.swatch{width:15px;height:15px}.swatch.acc{width:20px;height:20px}.swatch.sel{box-shadow:inset 0 0 0 1.2px rgba(140,140,140,.55),0 0 0 2px var(--text)}}
 </style></head><body data-page="sea"><div class="home-top"><div class="bar-left"><a class="wm" href="index.html" aria-label="ADH-Do">ADH<span class="do">Do</span></a></div><div id="themebar" aria-label="pick a theme"></div><div class="home-right"><a class="btn nav-cta" href="https://apps.apple.com/app/idXXXXXXXXXX" data-todo="app-store-url" rel="noopener">Download</a></div></div><section class="rink" id="rink"><div class="hero-line" id="heroLine" aria-live="polite"></div><div class="stream" id="stream" aria-label="a stream of floating tasks; tap one to complete it or add your own below"></div><div class="toast" id="toast"></div><div class="bottom"><p class="teach">Drag to <b>fling</b>. Double-tap to <b>mark done</b>.</p><div class="adder"><input id="addbox" type="text" maxlength="60" placeholder="Call mom, take out trash, water the sad plant..." aria-label="brain dump: type one or several tasks"><button class="add" id="addbtn" type="button">Add</button></div></div></section><footer><span class="tiny">© 2026 ADH-Do · <a class="foot-link" href="privacy.html">Privacy policy</a></span></footer><script>
 (function(){
   var DP=[
@@ -328,7 +329,7 @@ footer .tiny{font-size:13px;font-weight:600}
   function measure(){var r=rink.getBoundingClientRect();W=r.width;H=r.height;topPad=Math.min(H*0.2,130);botPad=Math.min(H*0.26,180);}
   function sizeRink(){var nv=document.querySelector('nav'),ft=document.querySelector('footer');var nh=(nv?nv.offsetHeight:0)+(ft?ft.offsetHeight:0);rink.style.height=Math.max(520,window.innerHeight-nh)+'px';measure();}
   window.addEventListener('resize',sizeRink);
-  var CURRENT=reduce?0:20, cards=[];   // the app's gentle rightward current
+  var CURRENT=reduce?0:8, cards=[];   // the app's gentle rightward current
   function rnd(a,b){return a+Math.random()*(b-a);}
 
   var DAYS=['monday','tuesday','wednesday','thursday','friday','saturday','sunday','mon','tue','tues','wed','thu','thur','thurs','fri','sat','sun'];
@@ -346,9 +347,9 @@ footer .tiny{font-size:13px;font-weight:600}
     var c={el:el,text:text,due:opts.due||'',w:w,h:h,done:false,grabbed:false,escortTo:null,
       x:opts.x!=null?opts.x:rnd(20,Math.max(40,W-w-20)),
       y:opts.y!=null?opts.y:rnd(topPad,Math.max(topPad+10,H-botPad-h)),
-      dx:CURRENT+rnd(-6,16), dy:0, seed:Math.random()*1000,
+      dx:CURRENT+rnd(-3,5), dy:0, seed:Math.random()*1000,
       vx:0,vy:0,ang:rnd(-5,5),angVel:0,lastTap:0};
-    c.vx=opts.vx!=null?opts.vx:c.dx; c.vy=opts.vy!=null?opts.vy:rnd(-10,10);
+    c.vx=opts.vx!=null?opts.vx:c.dx; c.vy=opts.vy!=null?opts.vy:rnd(-4,4);
     cards.push(c); draw(c); attach(c);
     if(opts.flame===2) blaze(c);
     var f=el.querySelector('.flame');
@@ -379,7 +380,7 @@ footer .tiny{font-size:13px;font-weight:600}
       c.x+=c.vx*dt;c.y+=c.vy*dt;c.ang+=c.angVel*dt;
       // a fling decays back onto the current; slow pucks ride it off the right edge and re-enter left
       c.vx=c.dx+(c.vx-c.dx)*keep; c.vy=c.dy+(c.vy-c.dy)*keep; c.angVel*=keep; c.ang*=Math.pow(0.4,dt);
-      if(!reduce&&Math.abs(c.vy)<8&&Math.abs(c.vx-c.dx)<8){ c.vy+=Math.sin(now*0.0011+c.seed)*6*dt; }
+      if(!reduce&&Math.abs(c.vy)<8&&Math.abs(c.vx-c.dx)<8){ c.vy+=Math.sin(now*0.0006+c.seed)*2.5*dt; }
       var minY=topPad,maxY=H-botPad-c.h;if(maxY<minY)maxY=minY;
       if(c.y<minY){c.y=minY;c.vy=Math.abs(c.vy)*0.6;}
       if(c.y>maxY){c.y=maxY;c.vy=-Math.abs(c.vy)*0.6;}
