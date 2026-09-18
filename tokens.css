@@ -1,0 +1,47 @@
+/* adhdo color tokens — generated from Models.swift (dopamineBases). do not hand-edit. */
+:root{
+  /* vocabulary */
+  --c-magenta:#F03CC4;
+  --c-gold:#FADD2E;
+  --c-teal:#16D6BE;
+  --c-lime:#B8EB2E;
+  --c-aqua:#3DD9F0;
+  --c-blue:#2E6BF5;
+  --c-tangerine:#FF8A1F;
+  --c-violet:#7B3DF5;
+  --c-green:#3ED96B;
+  --c-orchid:#C24DF0;
+  --c-white:#FFFFFF;
+  --c-black:#0D0D0D;
+  /* base inks: the deep tone of each base hue (light ink = dark base) */
+  --ink-magenta:#5A0E47;
+  --ink-tangerine:#5C2E05;
+  --ink-gold:#5C4D05;
+  --ink-lime:#3D5208;
+  --ink-green:#0C4A21;
+  --ink-teal:#07473F;
+  --ink-aqua:#0A4854;
+  --ink-blue:#EAF0FF;
+  --ink-violet:#F0EAFF;
+  --ink-orchid:#43105E;
+  --ink-white:#191917;
+  --ink-black:#F2F2EE;
+  /* fixed */
+  --on-accent-dark:#141412;
+  --on-accent-light:#F5F5F0;
+  --urgent-on-dark:#FF9A6A;
+  --urgent-on-light:#D96A3B;
+}
+
+/* derivation rules (applied at runtime by theme.js):
+   ink: text color is the base's own ink; a light ink (luminance > 0.5) means a dark base
+   light_base_pull: light bases are mixed 6% toward white before any surface math
+   paper_base: a light base with luminance > 0.86 is "paper" (white)
+   card: dark: base.mix(white,0.12) · paper: base.mix(ink,0.055) · else: base.mix(white,0.60)
+   card_border: dark: base.mix(white,0.20) · paper: base.mix(ink,0.11) · else: base.mix(ink,0.16)
+   sub: base.mix(ink,0.76)
+   faint: base.mix(ink,0.58)
+   on_accent: accent luminance > 0.62 ? #141412 : #F5F5F0
+   urgent: dark base: #FF9A6A · light base: #D96A3B
+   luminance: 0.299r + 0.587g + 0.114b
+*/
