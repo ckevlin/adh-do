@@ -60,7 +60,7 @@ nav{position:sticky;top:0;z-index:60;background:var(--base);transition:backgroun
 .navlink.active{opacity:1;color:var(--accent)}
 .nav-right{flex:1 1 0;display:flex;align-items:center;gap:14px;justify-content:flex-end}
 #themebar{flex:0 0 auto;display:flex;align-items:center;gap:7px;flex-wrap:wrap;justify-content:center}
-.swatch{width:20px;height:20px;border-radius:50%;border:none;position:relative;padding:0;
+.swatch{width:26px;height:26px;border-radius:50%;border:none;position:relative;padding:0;
   box-shadow:inset 0 0 0 1.6px rgba(140,140,140,.55);transition:transform .12s}
 .swatch:hover{transform:scale(1.18)}
 .swatch:focus-visible{outline:2px solid var(--text);outline-offset:2px}
@@ -202,7 +202,7 @@ footer .tiny{font-size:13px;font-weight:600}
 
 
 .swatch{animation:swin .22s cubic-bezier(.2,1.3,.4,1) both}
-.swatch.acc{width:26px;height:26px}
+
 @keyframes swin{from{transform:scale(.4);opacity:0}}
 @media (prefers-reduced-motion:reduce){.swatch{animation:none}}
 .foot-link{color:var(--muted);text-decoration:underline;text-underline-offset:3px}.foot-link:hover{color:var(--accent)}
@@ -214,8 +214,11 @@ footer .tiny{font-size:13px;font-weight:600}
 .legal h2{font-weight:800;font-size:clamp(22px,2.8vw,30px);margin:38px 0 10px;color:var(--text)}
 .legal p{font-weight:500;font-size:clamp(18px,2.2vw,21px);line-height:1.6;color:var(--text);margin:0 0 14px}
 .legal a{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
-@media(max-width:640px){#themebar{gap:5px;margin-top:8px}.swatch{width:15px;height:15px}.swatch.acc{width:20px;height:20px}.swatch.sel{box-shadow:inset 0 0 0 1.2px rgba(140,140,140,.55),0 0 0 2px var(--text)}}
-</style></head><body data-page="privacy"><nav><div class="bar-left"><a class="wm" href="index.html" aria-label="ADH-Do">ADH<span class="do">Do</span></a></div><div id="themebar" aria-label="pick a theme"></div><div class="nav-right"><a class="btn nav-cta" href="https://apps.apple.com/app/idXXXXXXXXXX" data-todo="app-store-url" rel="noopener">Download</a></div></nav>
+@media(max-width:640px){#themebar{gap:5px;margin-top:8px}.swatch{width:20px;height:20px}.swatch.sel{box-shadow:inset 0 0 0 1.2px rgba(140,140,140,.55),0 0 0 2px var(--text)}}
+.colors-bottom{display:flex;justify-content:center;padding:6px var(--edge) 30px}
+.colors-bottom #themebar{justify-content:center;margin:0}
+@media(max-width:640px){.colors-bottom #themebar{order:initial;flex-basis:auto;margin-top:0}}
+</style></head><body data-page="privacy"><nav><div class="bar-left"><a class="wm" href="index.html" aria-label="ADH-Do">ADH<span class="do">Do</span></a></div><div class="nav-right"><a class="btn nav-cta" href="https://apps.apple.com/app/idXXXXXXXXXX" data-todo="app-store-url" rel="noopener">Download</a></div></nav>
 <section class="legal">
   <h1>Privacy policy</h1>
   <p class="eff">Effective September 17, 2026</p>
@@ -239,7 +242,7 @@ footer .tiny{font-size:13px;font-weight:600}
   <h2>Changes and contact</h2>
   <p>If this policy changes in a way that matters, we'll update the date above and let you know in the app. Questions or requests, including deleting anything held on our server: <a href="mailto:support@adhdoapp.com">support@adhdoapp.com</a></p>
 </section>
-<footer><span class="tiny">© 2026 ADH-Do · <a class="foot-link" href="privacy.html">Privacy policy</a></span></footer><script>
+<div class="colors-bottom"><div id="themebar" aria-label="pick a theme"></div></div><footer><span class="tiny">© 2026 ADH-Do · <a class="foot-link" href="privacy.html">Privacy policy</a></span></footer><script>
 (function(){
   var DP=[
     {id:'magenta',hex:'F03CC4',ink:'5A0E47',accents:[['gold','FADD2E'],['teal','16D6BE'],['lime','B8EB2E'],['aqua','3DD9F0'],['blue','2E6BF5'],['tangerine','FF8A1F']]},
