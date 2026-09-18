@@ -229,6 +229,7 @@ footer .tiny{font-size:13px;font-weight:600}
 /* urgent blaze: the app's licks, drawn live off the top edge */
 .blaze{position:absolute;left:0;top:-80px;width:100%;height:80px;pointer-events:none;overflow:hidden;z-index:-1}
 @media(max-width:640px){#themebar{gap:5px;margin-top:8px}.swatch{width:15px;height:15px}.swatch.acc{width:20px;height:20px}.swatch.sel{box-shadow:inset 0 0 0 1.2px rgba(140,140,140,.55),0 0 0 2px var(--text)}}
+@media(max-width:640px){.bottom #themebar{margin-top:6px;order:initial;flex-basis:auto;justify-content:center}}
 </style></head><body data-page="sea"><div class="home-top"><div class="bar-left"><a class="wm" href="index.html" aria-label="ADH-Do">ADH<span class="do">Do</span></a></div><div id="themebar" aria-label="pick a theme"></div><div class="home-right"><a class="btn nav-cta" href="https://apps.apple.com/app/idXXXXXXXXXX" data-todo="app-store-url" rel="noopener">Download</a></div></div><section class="rink" id="rink"><div class="hero-line" id="heroLine" aria-live="polite"></div><div class="stream" id="stream" aria-label="a stream of floating tasks; tap one to complete it or add your own below"></div><div class="toast" id="toast"></div><div class="bottom"><p class="teach">Drag to <b>fling</b>. Double-tap to <b>mark done</b>.</p><div class="adder"><input id="addbox" type="text" maxlength="60" placeholder="Call mom, take out trash, water the sad plant..." aria-label="brain dump: type one or several tasks"><button class="add" id="addbtn" type="button">Add</button></div></div></section><footer><span class="tiny">© 2026 ADH-Do · <a class="foot-link" href="privacy.html">Privacy policy</a></span></footer><script>
 (function(){
   var DP=[
@@ -512,4 +513,9 @@ footer .tiny{font-size:13px;font-weight:600}
   boot();
   window.addEventListener('load',boot);
 })();
+</script><script>
+(function(){ var bar=document.getElementById('themebar'), top=document.querySelector('.home-top'), right=document.querySelector('.home-right'), bottom=document.querySelector('.bottom');
+  if(!bar||!top||!bottom)return;
+  function place(){ if(window.innerWidth<=640){ if(bar.parentNode!==bottom) bottom.appendChild(bar); } else { if(bar.parentNode!==top) top.insertBefore(bar,right); } }
+  place(); window.addEventListener('resize',place); })();
 </script></body></html>
