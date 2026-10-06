@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /features
+Disallow: /features.html
+
+Sitemap: https://www.adhdoapp.com/sitemap.xml
